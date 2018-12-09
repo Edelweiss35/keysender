@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add group</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Add group</h1>
+    <form method="post" action="{{ path('addGroupForm') }}">
+        <div class="form-group">
+            <label for="group-name">Name</label>
+            <input type="text" class="form-control" name="group-name" id="group-name" placeholder="Enter group name">
+        </div>
+        <div class="form-group">
+            <label for="group-shop-sku">Shop sku</label>
+            <input type="text" class="form-control" name="shop-sku" id="group-shop-sku" placeholder="Enter shop-sku">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    {% if message %}
+        <div class="alert{% if success %} alert-success{% else %} alert-danger{% endif %}" role="alert">
+            {{ message }}
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>

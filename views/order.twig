@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Order Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Order {{ order.order_number }}</h1>
+
+    <table class="table">
+        <tr>
+            <th>create_at</th>
+            <td>{{ order.created_at }}</td>
+        </tr>
+        <tr>
+            <th>price</th>
+            <td>{{ order.price }}</td>
+        </tr>
+        <tr>
+            <th>items_count</th>
+            <td>{{ order.items_count }}</td>
+        </tr>
+        <tr>
+            <th>address_billing.first_name</th>
+            <td>{{ order.address_billing.first_name }}</td>
+        </tr>
+
+    </table>
+
+    <strong>Items</strong>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">paid_price</th>
+            <th scope="col">name</th>
+            <th scope="col">shop_sku</th>
+            <th scope="col">digital_delivery_info</th>
+            <th scope="col">status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.paid_price }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.shop_sku }}</td>
+                <td>{{ item.digital_delivery_info }}</td>
+                <td>{{ item.status }}</td>
+                <td>
+                    <a href="{{ path('message', {email:item.digital_delivery_info, name: order.address_billing.first_name}) }}">
+                        <button type="button" class="btn btn-primary">Send Email</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

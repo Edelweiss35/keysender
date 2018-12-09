@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add code</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Add code</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shop sku</th>
+            <th scope="col">Created</th>
+            <th scope="col">Available codes</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ group.id }}</td>
+                <td>{{ group.name }}</td>
+                <td>{{ group.shop_sku }}</td>
+                <td>{{ group.created_at }}</td>
+                <td>{{ group.available_codes }}</td>
+            </tr>
+    </table>
+
+    <form method="post" action="{{ path('addCodeForm', {groupId: group.id}) }}">
+        <div class="form-group">
+            <label for="codes">Code</label>
+            <textarea class="form-control" name="codes" id="codes" rows="6"
+                      placeholder="Enter one code into one line"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="usage">Key usage</label>
+            <input type="text" class="form-control" name="usage" id="usage" placeholder="Enter number">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    {#{% if message %}#}
+        {#{% if success %}#}
+            {#<div class="alert alert-success" role="alert">#}
+                {#{{ message }}#}
+            {#</div>#}
+        {#{% else %}#}
+            {#<div class="alert alert-danger" role="alert">#}
+                {#{{ message }}#}
+            {#</div>#}
+        {#{% endif %}#}
+    {#{% endif %}#}
+</div>
+</body>
+</html>

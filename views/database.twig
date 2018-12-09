@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Database</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Database</h1>
+    <p><a href="{{ path('addGroupForm') }}">
+            <button type="button" class="btn btn-primary">Add group</button>
+        </a></p>
+    <nav>
+        <ul class="pagination">
+            <li class="page-item{% if disablePrevious %} disabled{% endif %}">
+                <a class="page-link"
+                   href="{{ path('database', {page: page - 1}) }}">Previous</a>
+            </li>
+            <li class="page-item">
+                <span class="page-link">Page {{ page }}</span>
+            </li>
+            <li class="page-item{% if disableNext %} disabled{% endif %}">
+                <a class="page-link" href="{{ path('database', {page: page + 1}) }}">Next</a></li>
+        </ul>
+    </nav>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shop sku</th>
+            <th scope="col">Created</th>
+            <th scope="col">Available codes</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for group in groups %}
+            <tr>
+                <td>{{ group.id }}</td>
+                <td>{{ group.name }}</td>
+                <td>{{ group.shop_sku }}</td>
+                <td>{{ group.created_at }}</td>
+                <td>{{ group.available_codes }}</td>
+                <td>
+                    <a href="{{ path('addCodeForm', {groupId: group.id}) }}">
+                        <button type="button" class="btn btn-primary">Add codes</button>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

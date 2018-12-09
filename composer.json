@@ -1,0 +1,13 @@
+{
+    "require": {
+        "silex/silex": "^2.3",
+        "phpmailer/phpmailer": "^6.0",
+        "twig/twig": "^2.5",
+        "symfony/twig-bridge": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App"
+        }
+    }
+}
